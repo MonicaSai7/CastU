@@ -13,7 +13,7 @@ def create_app(test_config=None):
     # Set up CORS. Allow '*' for origins. Delete the sample route after completing the TODOs
     CORS(app, resources={'/': {'origins': '*'}})
 
-    db_drop_and_create_all()
+    #db_drop_and_create_all()
 
     @app.after_request
     def after_request(response):

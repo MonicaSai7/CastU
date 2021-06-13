@@ -10,7 +10,7 @@ cffi==1.14.0
 chardet==3.0.4
 Click==7.0
 colorama==0.4.3
-cryptography==2.9.2
+cryptography
 docutils==0.15.2
 ecdsa==0.13.3
 Flask==1.0.2
@@ -72,4 +72,4 @@ wcwidth==0.1.9
 Werkzeug==0.15.3
 wrapt==1.11.1
 WTForms==2.2.1
-zipp==3.4.1
+zipp

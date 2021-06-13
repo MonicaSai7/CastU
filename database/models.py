@@ -1,8 +1,10 @@
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import Column, String, Integer, Date, ForeignKey
 from flask_sqlalchemy import SQLAlchemy
+import os
 
-database_name = "castu"
-database_path = "postgres://admin:admin@{}/{}".format('localhost:5432', database_name)
+#database_name = "castu"
+#database_path = "postgres://admin:admin@{}/{}".format('localhost:5432', database_name)
+database_path = os.environ['DATABASE_URL']
 
 db = SQLAlchemy()
 
@@ -16,6 +18,7 @@ def setup_db(app, database_path=database_path):
     db.app = app
     db.init_app(app)
     db.create_all()
+
 
 def db_drop_and_create_all():
     """
@@ -49,7 +52,7 @@ class Movie(db.Model):
     
     def insert(self):
         db.session.add(self)
-        db.commit()
+        db.session.commit()
 
     def update(self):
         db.session.commit()

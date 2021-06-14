@@ -2,8 +2,6 @@ from sqlalchemy import Column, String, Integer, Date, ForeignKey
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-#database_name = "castu"
-#database_path = "postgres://admin:admin@{}/{}".format('localhost:5432', database_name)
 database_path = os.environ['DATABASE_URL']
 
 db = SQLAlchemy()
@@ -12,6 +10,8 @@ db = SQLAlchemy()
 setup_db(app)
     binds a flask application and a SQLAlchemy service
 '''
+
+
 def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -28,15 +28,19 @@ def db_drop_and_create_all():
     db.drop_all()
     db.create_all()
 
+
 cast = db.Table(
     'cast',
     Column('actor_id', Integer, ForeignKey('actors.id'), primary_key=True),
     Column('movie_id', Integer, ForeignKey('movies.id'), primary_key=True)
 )
 
+
 '''
     Movie
 '''
+
+
 class Movie(db.Model):
     __tablename__ = 'movies'
 
@@ -49,18 +53,18 @@ class Movie(db.Model):
     def __init__(self, title, release_date):
         self.title = title
         self.release_date = release_date
-    
+
     def insert(self):
         db.session.add(self)
         db.session.commit()
 
     def update(self):
         db.session.commit()
-    
+
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-    
+
     def format(self):
         return {
             'id': self.id,
@@ -68,9 +72,12 @@ class Movie(db.Model):
             'release_date': self.release_date
         }
 
+
 '''
     Actor
 '''
+
+
 class Actor(db.Model):
     __tablename__ = 'actors'
 
@@ -83,18 +90,18 @@ class Actor(db.Model):
         self.name = name
         self.age = age
         self.gender = gender
-    
+
     def insert(self):
         db.session.add(self)
         db.session.commit()
-    
+
     def update(self):
         db.session.commit()
 
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-    
+
     def format(self):
         return {
             'id': self.id,

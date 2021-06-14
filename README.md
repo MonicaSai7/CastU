@@ -3,6 +3,41 @@ The CastU models a company that is responsible for creating movies and managing 
 
 Access Heroku app at: https://castu-agency.herokuapp.com/
 
+## Installations
+It is recommended to set up the application in a Python virtual environment with Python 3.7.0<br>
+For detailed instructions refer [Python docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/).
+
+After the virtual environment is set up and activated, install the dependencies by running:
+
+```bash
+pip install -r requirements.txt
+```
+
+##### Key Dependencies
+- [Flask](http://flask.pocoo.org/) is a lightweight backend microservices framework. Flask is required to handle requests and responses.
+
+- [SQLAlchemy](https://www.sqlalchemy.org/) and [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) are libraries to handle the lightweight sqlite database. Since we want you to focus on auth, we handle the heavy lift for you in `./database/models.py`. We recommend skimming this code first so you know how to interface with the Drink model.
+
+- [jose](https://python-jose.readthedocs.io/en/latest/) JavaScript Object Signing and Encryption for JWTs. Useful for encoding, decoding, and verifying JWTS.
+
+## Running the server
+
+From within the `.` directory first ensure you are working using your created virtual environment.<br>
+Also, uncomment the line `db_drop_and_create_all()` on the initial run to setup the required tables in the database.
+Each time you open a new terminal session, run:
+
+```bash
+export DATABASE_URL=<database-connection-url>
+export FLASK_APP=app.py;
+```
+
+To run the server, execute:
+
+```bash
+flask run --reload
+```
+
+The `--reload` flag will detect file changes and restart the server automatically.
 ## API Specifications
 1. Models:
     - Movies with attributes title and release date
@@ -17,13 +52,23 @@ Access Heroku app at: https://castu-agency.herokuapp.com/
 3. Roles:
     #### Casting Assistant
         - Can view actors and movies
+            - get:actors
+            - get:actors-details
+            - get:movies
+            - get:movies-details
     #### Casting Director
         - All permissions a Casting Assistant has and…
         - Add or delete an actor from the database
         - Modify actors or movies
+            - post:actors
+            - patch:actors
+            - delete:actors
+            - patch:movies
     #### Executive Producer
         - All permissions a Casting Director has and…
         - Add or delete a movie from the database
+            - post:movies
+            - delete:movies
 
 ## Endpoints
 

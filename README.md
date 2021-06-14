@@ -1,5 +1,20 @@
 # CastU
-The CastU models a company that is responsible for creating movies and managing and assigning actors to those movies.
+The CastU models a company that is responsible for creating movies and managing and assigning actors to those movies. This application allows the film crew to easily maintain a shared database with casting decisions stored with proper data integrity.
+
+The motivation behind this project is to reinforce the skills acquired throughout thw Full Stack Web Developer Nanodegree at Udacity:
+```
+    - Coding in Python 3
+    - Relational Database Architecture
+    - Modeling Data Objects with SqlAlchemy
+    - Internet Protocols and Communication
+    - Developing a Flask API
+    - Authentication and Access
+    - Authentication with Auth0
+    - Authentication in Flask
+    - Role-Based Access Control (RBAC)
+    - Testing Flask Applications
+    - Deploying Applications
+```
 
 Access Heroku app at: https://castu-agency.herokuapp.com/
 
